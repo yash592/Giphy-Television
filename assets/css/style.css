@@ -1,9 +1,14 @@
 body {
 	margin: 0 auto;
+	background-color: #1B1B1B;
 }
 
 h1 {
 	text-align: center;
+	font-family: 'Bangers', cursive;
+	color: red;
+	font-size: 100px;
+	text-shadow: 3px -1px white;
 }
 
 button {
@@ -14,4 +19,13 @@ button {
 
 form {
 	text-align: center;
+}
+
+.gif {
+	padding: 25px;
+}
+
+#showsubmit {
+	font-family: 'Bangers', cursive;
+	    font-size: 14px;
 }

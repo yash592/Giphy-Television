@@ -7,11 +7,7 @@ $(document).ready(function () {
 
 var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
-
-    // $("#showme").on("click", function(){
-
-    // })
-
+    
     function addTvButton () {
 
     	$("#buttons").empty();
@@ -45,20 +41,23 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
     }).done(function(response) {
       console.log(response);
 
-      var animatedgif = response.data[0].images.original.url;
+      for (var i = 0; i < response.data.length; i ++) {
+
+      var animatedgif = response.data[i].images.fixed_height.url;
       
       var tvshowgif = $("<img>");
-
+      
+      tvshowgif.addClass("gif");
       tvshowgif.attr("src", animatedgif);
       tvshowgif.attr("alt", "tv gif");
 
-
-
-
-
-
       $("#results").append(tvshowgif);
       addTvButton();
+
+
+      }
+
+      
     });
 
 
@@ -77,6 +76,12 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
     	addTvButton();
     });
+
+   
+    $(".gif").on("click", function(){
+    	
+    })
+
 
     $(document).on("click", ".tvshow", tvgifs);
 
