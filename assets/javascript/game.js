@@ -44,11 +44,21 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       for (var i = 0; i < response.data.length; i ++) {
 
       var animatedgif = response.data[i].images.fixed_height.url;
+      var stillgif = response.data[i].images.fixed_height_still;
       
       var tvshowgif = $("<img>");
+      var stilltvshowgif = $("<img>");
+
+      stilltvshowgif.addClass("gif");
+      stilltvshowgif.attr("src", stillgif);
+      stilltvshowgif.attr("data-still", stillgif);
+      stilltvshowgif.attr("data-state", "still");
       
       tvshowgif.addClass("gif");
       tvshowgif.attr("src", animatedgif);
+      tvshowgif.attr("data-state", "animated")
+      tvshowgif.attr("data-animated", animatedgif);
+      
       tvshowgif.attr("alt", "tv gif");
 
       $("#results").append(tvshowgif);
@@ -79,8 +89,26 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
    
     $(".gif").on("click", function(){
+
+    	alert("gif clicked");
+
+    	//fixed_height_still
+
+        
+
+    	var state = $(this).attr("data-state");
+
+    	if (state === "still") {
+    		$(this).attr("src", $(this).attr("data-animated"))
+    		$(this).attr("data-state", "animate");
+    	} else {
+        $(this).attr("src", $(this).attr("data-still"))
+    		$(this).attr("data-state", "still");
+    	}
     	
     })
+
+
 
 
     $(document).on("click", ".tvshow", tvgifs);
