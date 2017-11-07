@@ -44,8 +44,10 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       for (var i = 0; i < response.data.length; i ++) {
 
       var animatedgif = response.data[i].images.fixed_height.url;
-      var stillgif = response.data[i].images.fixed_height_still;
+      var stillgif = response.data[i].images.fixed_height_still.url;
       
+      
+
       var tvshowgif = $("<img>");
       var stilltvshowgif = $("<img>");
 
@@ -60,8 +62,12 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       tvshowgif.attr("data-animated", animatedgif);
       
       tvshowgif.attr("alt", "tv gif");
+      stilltvshowgif.attr("alt", "still gif");
 
-      $("#results").append(tvshowgif);
+      console.log(tvshowgif);
+      console.log(stilltvshowgif);
+
+      $("#results").append(stilltvshowgif);
       addTvButton();
 
 
@@ -100,7 +106,7 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
     	if (state === "still") {
     		$(this).attr("src", $(this).attr("data-animated"))
-    		$(this).attr("data-state", "animate");
+    		$(this).attr("data-state", "animated");
     	} else {
         $(this).attr("src", $(this).attr("data-still"))
     		$(this).attr("data-state", "still");
