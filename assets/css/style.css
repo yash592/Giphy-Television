@@ -13,6 +13,7 @@ h1 {
 
 button {
 	margin: 10px;
+	font-family: 'Michroma', sans-serif;
 }
 
 
@@ -28,4 +29,13 @@ form {
 #showsubmit {
 	font-family: 'Bangers', cursive;
 	    font-size: 14px;
+}
+
+.ratings {
+	color: white;
+}
+
+#results {
+	    width: 97%;
+    margin: 0 auto;
 }

@@ -32,7 +32,7 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
     	var tvshow = $(this).attr("data-tv");
 
-    var queryurl = "http://api.giphy.com/v1/gifs/search?q=" + tvshow + "&api_key=28gC9rCYdONr2MqkeKljSK20Q1p2otZ8&limit=5"
+    var queryurl = "https://api.giphy.com/v1/gifs/search?q=" + tvshow + "&api_key=28gC9rCYdONr2MqkeKljSK20Q1p2otZ8&limit=5"
 
 
     $.ajax({
@@ -45,11 +45,15 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
       var animatedgif = response.data[i].images.fixed_height.url;
       var stillgif = response.data[i].images.fixed_height_still.url;
+      var rating = response.data[i].rating;
+
+      console.log(rating);
       
       
 
       // var tvshowgif = $("<img>");
       var stilltvshowgif = $("<img>");
+
 
       stilltvshowgif.addClass("gif");
       
@@ -59,12 +63,10 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       stilltvshowgif.attr("data-still", stillgif);
       
       stilltvshowgif.attr("data-state", "still");
-      // stilltvshowgif.attr("data-state", "animated")
-      
-      // tvshowgif.addClass("gif");
-      // tvshowgif.attr("src", animatedgif);
-      // tvshowgif.attr("data-state", "animated")
-      // tvshowgif.attr("data-animated", animatedgif);
+
+      // var ratings = $("<p>");
+      // ratings.attr("id", "rating");
+      // ratings.attr("src", rating);      
       
       // tvshowgif.attr("alt", "tv gif");
       stilltvshowgif.attr("alt", "still gif");
@@ -73,6 +75,8 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       console.log(stilltvshowgif);
 
       $("#results").append(stilltvshowgif);
+      // $("#rating").text(ratings);
+
       addTvButton();
 
 
