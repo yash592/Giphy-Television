@@ -48,23 +48,28 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
       
       
 
-      var tvshowgif = $("<img>");
+      // var tvshowgif = $("<img>");
       var stilltvshowgif = $("<img>");
 
       stilltvshowgif.addClass("gif");
+      
+      stilltvshowgif.attr("src", animatedgif)
+      stilltvshowgif.attr("data-animated", animatedgif);
       stilltvshowgif.attr("src", stillgif);
       stilltvshowgif.attr("data-still", stillgif);
+      
       stilltvshowgif.attr("data-state", "still");
+      // stilltvshowgif.attr("data-state", "animated")
       
-      tvshowgif.addClass("gif");
-      tvshowgif.attr("src", animatedgif);
-      tvshowgif.attr("data-state", "animated")
-      tvshowgif.attr("data-animated", animatedgif);
+      // tvshowgif.addClass("gif");
+      // tvshowgif.attr("src", animatedgif);
+      // tvshowgif.attr("data-state", "animated")
+      // tvshowgif.attr("data-animated", animatedgif);
       
-      tvshowgif.attr("alt", "tv gif");
+      // tvshowgif.attr("alt", "tv gif");
       stilltvshowgif.attr("alt", "still gif");
 
-      console.log(tvshowgif);
+      // console.log(tvshowgif);
       console.log(stilltvshowgif);
 
       $("#results").append(stilltvshowgif);
@@ -73,6 +78,25 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
 
       }
 
+      $(".gif").on("click", function(){
+
+      // alert("gif clicked");
+
+      //fixed_height_still
+
+        
+
+      var state = $(this).attr("data-state");
+
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animated"))
+        $(this).attr("data-state", "animated");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"))
+        $(this).attr("data-state", "still");
+      }
+      
+    })
       
     });
 
@@ -94,25 +118,7 @@ var tvshows = ["BREAKING BAD", "GREY'S ANATOMY", "DEXTER"];
     });
 
    
-    $(".gif").on("click", function(){
-
-    	alert("gif clicked");
-
-    	//fixed_height_still
-
-        
-
-    	var state = $(this).attr("data-state");
-
-    	if (state === "still") {
-    		$(this).attr("src", $(this).attr("data-animated"))
-    		$(this).attr("data-state", "animated");
-    	} else {
-        $(this).attr("src", $(this).attr("data-still"))
-    		$(this).attr("data-state", "still");
-    	}
-    	
-    })
+    
 
 
 
